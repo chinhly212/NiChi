@@ -23,8 +23,10 @@ export default {
     const url = new URL(request.url);
     const path = url.pathname;
 
-    if (request.method === "GET" && path === "/health") {
-      return jsonOk({ service: env.APP_NAME, status: "healthy", ts: Date.now() });
+     if (
+  request.method === "GET" &&
+  (path === "/" || path === "/health")
+) {service: env.APP_NAME, status: "healthy", ts: Date.now() });
     }
 
     const { user, error } = await requireUser(request, env);
